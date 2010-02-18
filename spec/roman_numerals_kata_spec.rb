@@ -1,10 +1,12 @@
 require 'roman_numerals_kata'
 
 describe RomanNumeralsKata do
-  before(:each) do
-    @method = lambda{|value| RomanNumeralKata.convert(value) }
+  it "should not have any instance variables" do
+    kata = RomanNumeralsKata
+    kata.convert(1)
+    kata.instance_variables.should be_empty
   end
-  
+
   it "should return I for 1" do
     RomanNumeralsKata.convert(1).should == 'I'
   end
