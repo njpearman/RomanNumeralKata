@@ -1,8 +1,14 @@
 module RomanNumeralsKata
-  C, L, X, V, I = 'C', 'L', 'X', 'V', 'I'
+  M, D, C, L, X, V, I = 'M', 'D', 'C', 'L', 'X', 'V', 'I'
 
   def self.convert value
-    add_units(mod_10(value), add_tens(value))
+    hundreds = add_numerals(value/100, [C,D,M])
+    tens = add_tens(mod_100(value), hundreds)
+    add_units(mod_10(value), tens)
+  end
+
+  def self.mod_100 value
+    value > 0 ? value % 100 : 0
   end
 
   def self.mod_10 value
@@ -18,8 +24,8 @@ module RomanNumeralsKata
     add_numeral(value, numeral_set[0], total)
   end
 
-  def self.add_tens value
-    add_numerals(value/10, [X,L,C])
+  def self.add_tens value, total=''
+    add_numerals(value/10, [X,L,C], total)
   end
 
   def self.add_units value, total=''

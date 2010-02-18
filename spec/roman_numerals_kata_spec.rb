@@ -1,6 +1,10 @@
 require 'roman_numerals_kata'
 
 describe RomanNumeralsKata do
+  before(:each) do
+    @method = lambda{|value| RomanNumeralKata.convert(value) }
+  end
+  
   it "should return I for 1" do
     RomanNumeralsKata.convert(1).should == 'I'
   end
@@ -96,6 +100,25 @@ describe RomanNumeralsKata do
 
   it "should return 100 as C" do
     RomanNumeralsKata.convert(100).should == 'C'
+  end
+
+  it "should return 499 as CDXCIX" do
+    RomanNumeralsKata.convert(499).should == 'CDXCIX'
+  end
+
+  it "should return the correct values for hundreds" do
+    RomanNumeralsKata.convert(200).should == 'CC'
+    RomanNumeralsKata.convert(300).should == 'CCC'
+    RomanNumeralsKata.convert(400).should == 'CD'
+    RomanNumeralsKata.convert(500).should == 'D'
+    RomanNumeralsKata.convert(600).should == 'DC'
+    RomanNumeralsKata.convert(700).should == 'DCC'
+    RomanNumeralsKata.convert(800).should == 'DCCC'
+    RomanNumeralsKata.convert(900).should == 'CM'
+  end
+
+  it "should return 1000 as M" do
+    RomanNumeralsKata.convert(1000).should =='M'
   end
 
   def assert_tens value, numeral
