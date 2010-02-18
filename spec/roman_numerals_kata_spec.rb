@@ -45,24 +45,70 @@ describe RomanNumeralsKata do
     RomanNumeralsKata.convert(10).should == 'X'
   end
 
-  it "should return XI for 11" do
+  it "should return XI, XII and XIII for 11, 12 and 13" do
     RomanNumeralsKata.convert(11).should == 'XI'
-  end
-
-  it "should return XII for 12" do
     RomanNumeralsKata.convert(12).should == 'XII'
+    RomanNumeralsKata.convert(13).should == 'XIII'
   end
 
-  it "should return XV for 15" do
+  it "should return XIV and XV for 14 and 15" do
     RomanNumeralsKata.convert(15).should == 'XV'
   end
 
-  it "should return XIX for 19" do
+  it "should return XVI, XVII, XVIII and XIX for 16, 17, 18 and 19" do
+    RomanNumeralsKata.convert(16).should == 'XVI'
+    RomanNumeralsKata.convert(17).should == 'XVII'
+    RomanNumeralsKata.convert(18).should == 'XVIII'
     RomanNumeralsKata.convert(19).should == 'XIX'
   end
 
-  it "should return XXXI for 31" do
-    RomanNumeralsKata.convert(31).should == 'XXXI'
+  it "should return twenties as XX*" do
+    assert_tens(20, 'XX')
+  end
+
+  it "should return thirties as XXX*" do
+    assert_tens(30, 'XXX')
+  end
+
+  it "should return forties as XL*" do
+    assert_tens(40, 'XL')
+  end
+
+  it "should return fifties as L*" do
+    assert_tens(50, 'L')
+  end
+
+  it "should return sixties as LX*" do
+    assert_tens(60, 'LX')
+  end
+
+  it "should return seventies as LXX*" do
+    assert_tens(70, 'LXX')
+  end
+
+  it "should return eighties as LXXX*" do
+    assert_tens(80, 'LXXX')
+  end
+
+  it "should return nineties as XC" do
+    assert_tens(90, 'XC')
+  end
+
+  it "should return 100 as C" do
+    RomanNumeralsKata.convert(100).should == 'C'
+  end
+
+  def assert_tens value, numeral
+    RomanNumeralsKata.convert(value).should == numeral
+    RomanNumeralsKata.convert(value+1).should == "#{numeral}I"
+    RomanNumeralsKata.convert(value+2).should == "#{numeral}II"
+    RomanNumeralsKata.convert(value+3).should == "#{numeral}III"
+    RomanNumeralsKata.convert(value+4).should == "#{numeral}IV"
+    RomanNumeralsKata.convert(value+5).should == "#{numeral}V"
+    RomanNumeralsKata.convert(value+6).should == "#{numeral}VI"
+    RomanNumeralsKata.convert(value+7).should == "#{numeral}VII"
+    RomanNumeralsKata.convert(value+8).should == "#{numeral}VIII"
+    RomanNumeralsKata.convert(value+9).should == "#{numeral}IX"
   end
 end
 
