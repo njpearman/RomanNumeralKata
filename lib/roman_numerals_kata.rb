@@ -1,30 +1,29 @@
 module RomanNumeralsKata
-  C, XC, L, XL, X, IX, V, IV, I = 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'
+  C, L, X, V, I = 'C', 'L', 'X', 'V', 'I'
 
   def self.convert value
-    get_units(mod_10(value), get_tens(value))
+    add_units(mod_10(value), add_tens(value))
   end
 
   def self.mod_10 value
     value > 0 ? value % 10 : 0
   end
 
-  def self.get_tens value
-    return C if value > 99
-    return XC if value > 89
-    return add_numeral(remainder_of(value/10), X, L) if value > 59
-    return L if value > 49
-    return XL if value > 39
-    tens = add_numeral(value / 10, X)
+  def self.add_numerals(value, numeral_set, total='')
+    return total+numeral_set[2] if value > 9
+    return total+numeral_set[0]+numeral_set[2] if value > 8
+    return add_numeral(remainder_of(value), numeral_set[0], total+numeral_set[1]) if value > 5
+    return total+numeral_set[1] if value > 4
+    return total+numeral_set[0]+numeral_set[1] if value > 3
+    add_numeral(value, numeral_set[0], total)
   end
 
-  def self.get_units value, total=''
-    return total+X if value > 9
-    return total+IX if value > 8
-    return add_numeral(remainder_of(value), I, total+V) if value > 5
-    return total+V if value > 4
-    return total+IV if value > 3
-    add_numeral(value, I, total)
+  def self.add_tens value
+    add_numerals(value/10, [X,L,C])
+  end
+
+  def self.add_units value, total=''
+    add_numerals(mod_10(value), [I,V,X], total)
   end
 
   def self.remainder_of value
