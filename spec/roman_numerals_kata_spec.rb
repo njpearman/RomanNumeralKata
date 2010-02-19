@@ -123,6 +123,17 @@ describe RomanNumeralsKata do
     RomanNumeralsKata.convert(1000).should =='M'
   end
 
+  it "should add multiples of 1000" do
+    RomanNumeralsKata.convert(2000).should == 'MM'
+    RomanNumeralsKata.convert(3000).should == 'MMM'
+    RomanNumeralsKata.convert(4000).should == 'MMMM'
+    RomanNumeralsKata.convert(5000).should == 'MMMMM'
+    RomanNumeralsKata.convert(6000).should == 'MMMMMM'
+    RomanNumeralsKata.convert(7000).should == 'MMMMMMM'
+    RomanNumeralsKata.convert(8000).should == 'MMMMMMMM'
+    RomanNumeralsKata.convert(9000).should == 'MMMMMMMMM'
+  end
+
   def assert_tens value, numeral
     RomanNumeralsKata.convert(value).should == numeral
     RomanNumeralsKata.convert(value+1).should == "#{numeral}I"
