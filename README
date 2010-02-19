@@ -1,3 +1,5 @@
 == functional_dojo
 
-You should document your project here.
+Messing around with a kata that we tried at work.
+
+It was supposed to be for a functional language, but I've taken it on in Ruby and tried to do it in a functional style.
