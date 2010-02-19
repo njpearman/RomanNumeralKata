@@ -1,7 +1,7 @@
 module RomanNumeralsKata
   M, D, C, L, X, V, I = 'M', 'D', 'C', 'L', 'X', 'V', 'I'
 
-  def self.convert value
+  def self.convert value=0
     add_units(value, add_tens(value, add_hundreds(value, add_thousands(value))))
   end
 
@@ -35,19 +35,19 @@ module RomanNumeralsKata
   end
 
   def self.mod_1000 value
-    positive_mod(1000, value)/100
+    order_of 1000, value
   end
 
   def self.mod_100 value
-    positive_mod(100, value)/10
+    order_of 100, value
   end
 
   def self.mod_10 value
-    positive_mod 10, value
+    order_of 10, value
   end
 
-  def self.positive_mod operator, value
-    value > 0 ? value % operator : 0
+  def self.order_of operator, value
+    value > 0 ? value % operator / (operator/10) : 0
   end
 
   def self.remainder_of value

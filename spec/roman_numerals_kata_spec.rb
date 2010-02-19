@@ -7,6 +7,11 @@ describe RomanNumeralsKata do
     kata.instance_variables.should be_empty
   end
 
+  it "should return '' for no argument or zero" do
+    RomanNumeralsKata.convert().should == ''
+    RomanNumeralsKata.convert(0).should == ''
+  end
+
   it "should return I for 1" do
     RomanNumeralsKata.convert(1).should == 'I'
   end
