@@ -2,12 +2,13 @@ module RomanNumeralsKata
   M, D, C, L, X, V, I = 'M', 'D', 'C', 'L', 'X', 'V', 'I'
 
   def self.convert value
-    thousands = add_numeral value/1000, M
-    hundreds = add_hundreds value, thousands
-    tens = add_tens value, hundreds
-    add_units value, tens
+    add_units(value, add_tens(value, add_hundreds(value, add_thousands(value))))
   end
 
+  def self.add_thousands value
+    add_numeral(value/1000, M)
+  end
+  
   def self.add_hundreds value, total=''
     add_numerals(mod_1000(value), [C,D,M], total)
   end
