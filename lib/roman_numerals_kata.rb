@@ -51,7 +51,10 @@ module RomanNumeralsKata
   end
 
   def self.remainder_of value
-    mod = (value-5) % 3
-    mod < 1 ? 3 : mod
+    mod_high(value) < 1 ? 3 : mod_high(value)
+  end
+
+  def self.mod_high value
+    (value-5) % 3
   end
 end
