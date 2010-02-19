@@ -10,15 +10,15 @@ module RomanNumeralsKata
   end
   
   def self.add_hundreds value, total=''
-    add_numerals(mod_1000(value), [C,D,M], total)
+    add_numerals(hundreds_count(value), [C,D,M], total)
   end
 
   def self.add_tens value, total=''
-    add_numerals(mod_100(value), [X,L,C], total)
+    add_numerals(tens_count(value), [X,L,C], total)
   end
 
   def self.add_units value, total=''
-    add_numerals(mod_10(value), [I,V,X], total)
+    add_numerals(units_count(value), [I,V,X], total)
   end
 
   def self.add_numeral integer, numeral, total=''
@@ -28,21 +28,25 @@ module RomanNumeralsKata
 
   def self.add_numerals(value, numeral_set, total='')
     return total+numeral_set[0]+numeral_set[2] if value > 8
-    return add_numeral(remainder_of(value), numeral_set[0], total+numeral_set[1]) if value > 5
+    return add_midpoint_numerals(value, numeral_set, total) if value > 5
     return total+numeral_set[1] if value > 4
     return total+numeral_set[0]+numeral_set[1] if value > 3
     add_numeral(value, numeral_set[0], total)
   end
 
-  def self.mod_1000 value
+  def self.add_midpoint_numerals value, numeral_set, total=''
+    add_numeral(remainder_of(value), numeral_set[0], total+numeral_set[1])
+  end
+
+  def self.hundreds_count value
     order_of 1000, value
   end
 
-  def self.mod_100 value
+  def self.tens_count value
     order_of 100, value
   end
 
-  def self.mod_10 value
+  def self.units_count value
     order_of 10, value
   end
 
