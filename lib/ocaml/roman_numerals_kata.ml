@@ -9,9 +9,10 @@ let rec add_i numerals value =
 let add_numerals total value =
 	match value with
 	| 9 -> "IX"
+	| 8 | 7 | 6 -> add_i "V" (value-5)
 	| 5 -> "V"
 	| 4 -> "IV"
-	| x -> add_i "" value
+	| x -> add_i "" x
 ;;
 
 let convert value =
