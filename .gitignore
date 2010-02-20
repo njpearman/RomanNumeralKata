@@ -1,4 +1,4 @@
 *.swp
-**/*.swp
-**/*.cmi
-**/*.cmo
+*.cmi
+*.cmo
+*run
