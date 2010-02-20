@@ -19,4 +19,8 @@ let convert value =
 	print_string ((add_numerals "" value) ^ "\n") 
 ;;
 
-convert (int_of_string Sys.argv.(1));;
+(* 
+Add this line to run as a command line executable:
+
+	convert (int_of_string Sys.argv.(1));; 
+*)
