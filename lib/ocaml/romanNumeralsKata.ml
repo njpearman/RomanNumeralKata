@@ -15,6 +15,10 @@ let add_numerals total value =
 	| x -> add_i "" x
 ;;
 
+let to_numerals value =
+	add_numerals "" value
+;;
+
 let convert value =
 	print_string ((add_numerals "" value) ^ "\n") 
 ;;
