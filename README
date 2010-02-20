@@ -1,5 +1,7 @@
 == functional_dojo
 
-Messing around with a kata that we tried at work.
+Messing around with a kata for generating Roman numerals that we tried at work using F#.
 
-It was supposed to be for a functional language, but I've taken it on in Ruby and tried to do it in a functional style.
+It was originally for a functional language, but I've gone for a Ruby slant and tried to do it in a functional style.
+
+I've also started on an attempt in OCAML, as F# is no good on Linux.
