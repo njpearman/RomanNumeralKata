@@ -12,40 +12,26 @@ let rec add numeral total value =
   	| x -> add numeral (total ^ numeral) (value-1)
 ;;
 
-let rec add_i numerals value =
-	add i numerals value
-;;
+let rec add_i numerals value = add i numerals value;;
 
-let rec add_x numerals value =
-	add x numerals (value / 10)
-;;
+let rec add_x numerals value = add x numerals (value / 10);;
 
-let add_numerals total value =
+let add_numerals (first, second, third) total value =
 	match value with
-	| 9 -> total ^ i ^ x
-	| 8 | 7 | 6 -> add_i (total ^ v) (value-5)
-	| 5 -> total ^ v
-	| 4 -> total ^ i ^ v
-	| x -> add_i total x
+	| 9 -> total ^ first ^ third
+	| 8 | 7 | 6 -> add first (total ^ second) (value-5)
+	| 5 -> total ^ second
+	| 4 -> total ^ first ^ second
+	| x -> add first total value
 ;;
 
-let add_tens total value =
-	match (value/10) with
-	| 0 -> total
-	| 9 -> x ^ c
-	| 6 | 7 | 8 -> add_x (total ^ l) (value-50)
-	| 5 -> total ^ l
-	| 4 -> total ^ x ^ l
-	| x -> add_x total value
-;;
+let add_units total value = add_numerals (i,v,x) total value;;
 
-let to_numerals value =
-	add_numerals (add_tens "" value) (value mod 10)
-;;
+let add_tens total value = add_numerals (x,l,c) total (value/10);;
 
-let convert value =
-	print_string ((add_numerals "" value) ^ "\n") 
-;;
+let to_numerals value = add_units (add_tens "" value) (value mod 10);;
+
+let convert value = print_string ((add_units "" value) ^ "\n");;
 
 (* 
 Add this line to run as a command line executable:

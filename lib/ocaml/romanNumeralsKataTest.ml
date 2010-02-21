@@ -5,6 +5,8 @@ open RomanNumeralsKata
 (* Definition of all tests *)
 let test_fixture = "Roman numerals kata" >:::
 [
+	"should return '' for 0" >:: ( fun () -> 
+		assert_equal "" (RomanNumeralsKata.to_numerals 0) );
 	"should return I for 1" >:: ( fun () -> 
 		assert_equal "I" (RomanNumeralsKata.to_numerals 1) );
 	"should return II for 2" >:: ( fun () -> 
