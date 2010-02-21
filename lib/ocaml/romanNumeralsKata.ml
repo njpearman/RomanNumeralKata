@@ -1,23 +1,44 @@
 (* First step in making an OCAML Roman ?Numeral converter *)
 
+let i = "I";;
+let v = "V";;
+let x = "X";;
+let l = "L";;
+let c = "C";;
+
 let rec add_i numerals value =
 	match value with
   	| 0 -> numerals
-  	| x -> add_i (numerals ^ "I") (value-1)
+  	| x -> add_i (numerals ^ i) (value-1)
 ;;
 
 let add_numerals total value =
 	match value with
-	| 10 -> "X"
-	| 9 -> "IX"
-	| 8 | 7 | 6 -> add_i "V" (value-5)
-	| 5 -> "V"
-	| 4 -> "IV"
-	| x -> add_i "" x
+	| 9 -> total ^ i ^ x
+	| 8 | 7 | 6 -> add_i (total ^ v) (value-5)
+	| 5 -> total ^ v
+	| 4 -> total ^ i ^ v
+	| x -> add_i total x
+;;
+
+let rec add_x numerals value =
+	match (value / 10) with
+	| 0 -> numerals
+	| x -> add_x (numerals ^ x) (value-10)
+;;
+
+let add_tens total value =
+	match (value/10) with
+	| 0 -> total
+	| 9 -> x ^ c
+	| 6 | 7 | 8 -> add_x (total ^ l) (value-50)
+	| 5 -> total ^ l
+	| 4 -> total ^ x ^ l
+	| x -> add_x total value
 ;;
 
 let to_numerals value =
-	add_numerals "" value
+	add_numerals (add_tens "" value) (value mod 10)
 ;;
 
 let convert value =

@@ -25,7 +25,28 @@ let test_fixture = "Roman numerals kata" >:::
 		assert_equal "IX" (RomanNumeralsKata.to_numerals 9) );
 	"should return X for 10" >:: ( fun () -> 
 		assert_equal "X" (RomanNumeralsKata.to_numerals 10) );
+	"should return XI for 11" >:: ( fun () -> 
+		assert_equal "XI" (RomanNumeralsKata.to_numerals 11) );
+	"should return XII for 12" >:: ( fun () -> 
+		assert_equal "XII" (RomanNumeralsKata.to_numerals 12) );
+	"should return XXIII for 23" >:: ( fun () -> 
+		assert_equal "XXIII" (RomanNumeralsKata.to_numerals 23) );
+	"should return XXXIV for 34" >:: ( fun () -> 
+		assert_equal "XXXIV" (RomanNumeralsKata.to_numerals 34) );
+	"should return XLV for 45" >:: ( fun () -> 
+		assert_equal "XLV" (RomanNumeralsKata.to_numerals 45) );
+	"should return LVI for 56" >:: ( fun () -> 
+		assert_equal "LVI" (RomanNumeralsKata.to_numerals 56) );
+	"should return LXVII for 67" >:: ( fun () -> 
+		assert_equal "LXVII" (RomanNumeralsKata.to_numerals 67) );
+	"should return LXXVIII for 78" >:: ( fun () -> 
+		assert_equal "LXXVIII" (RomanNumeralsKata.to_numerals 78) );
+	"should return LXXXIX for 89" >:: ( fun () -> 
+		assert_equal "LXXXIX" (RomanNumeralsKata.to_numerals 89) );
+	"should return XC for 90" >:: ( fun () -> 
+		assert_equal "XC" (RomanNumeralsKata.to_numerals 90) );
 ]
 
 (* Run the tests! *)
 let _ = run_test_tt ~verbose:true test_fixture
+
