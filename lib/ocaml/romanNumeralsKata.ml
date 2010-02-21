@@ -6,10 +6,18 @@ let x = "X";;
 let l = "L";;
 let c = "C";;
 
-let rec add_i numerals value =
+let rec add numeral total value =
 	match value with
-  	| 0 -> numerals
-  	| x -> add_i (numerals ^ i) (value-1)
+  	| 0 -> total
+  	| x -> add numeral (total ^ numeral) (value-1)
+;;
+
+let rec add_i numerals value =
+	add i numerals value
+;;
+
+let rec add_x numerals value =
+	add x numerals (value / 10)
 ;;
 
 let add_numerals total value =
@@ -19,12 +27,6 @@ let add_numerals total value =
 	| 5 -> total ^ v
 	| 4 -> total ^ i ^ v
 	| x -> add_i total x
-;;
-
-let rec add_x numerals value =
-	match (value / 10) with
-	| 0 -> numerals
-	| x -> add_x (numerals ^ x) (value-10)
 ;;
 
 let add_tens total value =
