@@ -1,5 +1,6 @@
 (* First step in making an OCAML Roman numeral converter *)
 
+let empty = "";;
 let i = "I";;
 let v = "V";;
 let x = "X";;
@@ -29,9 +30,9 @@ let add_units total value = add_numerals (i,v,x) total value;;
 
 let add_tens total value = add_numerals (x,l,c) total (value/10);;
 
-let to_numerals value = add_units (add_tens "" value) (value mod 10);;
+let to_numerals value = add_units (add_tens empty value) (value mod 10);;
 
-let convert value = print_string ((add_units "" value) ^ "\n");;
+let convert value = print_string ((add_units empty value) ^ "\n");;
 
 (* 
 Add this line to run as a command line executable:
