@@ -1,4 +1,4 @@
-(* First step in making an OCAML Roman ?Numeral converter *)
+(* First step in making an OCAML Roman numeral converter *)
 
 let i = "I";;
 let v = "V";;
@@ -12,9 +12,9 @@ let rec add numeral total value =
   	| x -> add numeral (total ^ numeral) (value-1)
 ;;
 
-let rec add_i numerals value = add i numerals value;;
+let add_i numerals value = add i numerals value;;
 
-let rec add_x numerals value = add x numerals (value / 10);;
+let add_x numerals value = add x numerals (value / 10);;
 
 let add_numerals (first, second, third) total value =
 	match value with

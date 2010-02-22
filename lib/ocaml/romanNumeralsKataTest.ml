@@ -29,24 +29,22 @@ let test_fixture = "Roman numerals kata" >:::
 		assert_equal "X" (RomanNumeralsKata.to_numerals 10) );
 	"should return XI for 11" >:: ( fun () -> 
 		assert_equal "XI" (RomanNumeralsKata.to_numerals 11) );
-	"should return XII for 12" >:: ( fun () -> 
-		assert_equal "XII" (RomanNumeralsKata.to_numerals 12) );
-	"should return XXIII for 23" >:: ( fun () -> 
-		assert_equal "XXIII" (RomanNumeralsKata.to_numerals 23) );
-	"should return XXXIV for 34" >:: ( fun () -> 
-		assert_equal "XXXIV" (RomanNumeralsKata.to_numerals 34) );
-	"should return XLV for 45" >:: ( fun () -> 
-		assert_equal "XLV" (RomanNumeralsKata.to_numerals 45) );
-	"should return LVI for 56" >:: ( fun () -> 
-		assert_equal "LVI" (RomanNumeralsKata.to_numerals 56) );
-	"should return LXVII for 67" >:: ( fun () -> 
-		assert_equal "LXVII" (RomanNumeralsKata.to_numerals 67) );
-	"should return LXXVIII for 78" >:: ( fun () -> 
-		assert_equal "LXXVIII" (RomanNumeralsKata.to_numerals 78) );
-	"should return LXXXIX for 89" >:: ( fun () -> 
-		assert_equal "LXXXIX" (RomanNumeralsKata.to_numerals 89) );
-	"should return XC for 90" >:: ( fun () -> 
-		assert_equal "XC" (RomanNumeralsKata.to_numerals 90) );
+	"should return XXII for 223" >:: ( fun () -> 
+		assert_equal "XXII" (RomanNumeralsKata.to_numerals 22) );
+	"should return XXXIII for 33" >:: ( fun () -> 
+		assert_equal "XXXIII" (RomanNumeralsKata.to_numerals 33) );
+	"should return XILV for 44" >:: ( fun () -> 
+		assert_equal "XLIV" (RomanNumeralsKata.to_numerals 44) );
+	"should return LV for 55" >:: ( fun () -> 
+		assert_equal "LV" (RomanNumeralsKata.to_numerals 55) );
+	"should return LXVI for 66" >:: ( fun () -> 
+		assert_equal "LXVI" (RomanNumeralsKata.to_numerals 66) );
+	"should return LXXVII for 77" >:: ( fun () -> 
+		assert_equal "LXXVII" (RomanNumeralsKata.to_numerals 77) );
+	"should return LXXXVIII for 88" >:: ( fun () -> 
+		assert_equal "LXXXVIII" (RomanNumeralsKata.to_numerals 88) );
+	"should return XCIX for 99" >:: ( fun () -> 
+		assert_equal "XCIX" (RomanNumeralsKata.to_numerals 99) );
 ]
 
 (* Run the tests! *)
