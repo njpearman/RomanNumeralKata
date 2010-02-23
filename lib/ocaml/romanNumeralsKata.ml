@@ -24,13 +24,21 @@ let add_numerals (first, second, third) total value =
 	| x -> add first total value
 ;;
 
-let add_units total value = add_numerals (i,v,x) total (value mod 10);;
+let base value modulus = (value mod modulus) / (modulus / 10);;
 
-let add_tens total value = add_numerals (x,l,c) total ((value mod 100) / 10);;
+let add_units total value = add_numerals (i,v,x) total (base value 10);;
 
-let add_hundreds total value = add_numerals (c, d, m) total (value / 100);;
+let add_tens total value = add_numerals (x,l,c) total (base value 100);;
 
-let to_numerals value = add_units (add_tens (add_hundreds empty value) value) value;;
+let add_hundreds total value = add_numerals (c, d, m) total (base value 1000);;
+
+let rec add_thousands total value = 
+	match (value) with
+	| 0 -> total
+	| x -> add_thousands (total ^ m) (value - 1)
+;;
+
+let to_numerals value = add_units (add_tens (add_hundreds (add_thousands empty (value / 1000) ) value) value) value;;
 
 let convert value = print_string ((add_units empty value) ^ "\n");;
 

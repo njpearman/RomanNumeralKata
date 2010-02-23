@@ -63,6 +63,16 @@ let test_fixture = "Roman numerals kata" >:::
 		assert_equal "DCCCLXXXVIII" (RomanNumeralsKata.to_numerals 888) );
 	"should return CMXCIX for 999" >:: ( fun () ->
 		assert_equal "CMXCIX" (RomanNumeralsKata.to_numerals 999) );
+	"should return MCXI for 1111" >:: ( fun () ->
+		assert_equal "MCXI" (RomanNumeralsKata.to_numerals 1111) );
+	"should return MMCCXXII for 2222" >:: ( fun () ->
+		assert_equal "MMCCXXII" (RomanNumeralsKata.to_numerals 2222) );
+	"should return MMMCCCXXXIII for 3333" >:: ( fun () ->
+		assert_equal "MMMCCCXXXIII" (RomanNumeralsKata.to_numerals 3333) );
+	"should return MMMMCDXLIV for 4444" >:: ( fun () ->
+		assert_equal "MMMMCDXLIV" (RomanNumeralsKata.to_numerals 4444) );
+	"should return MMMMMDLV for 5555" >:: ( fun () ->
+		assert_equal "MMMMMDLV" (RomanNumeralsKata.to_numerals 5555) );
 ]
 
 (* Run the tests! *)
