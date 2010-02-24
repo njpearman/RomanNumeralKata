@@ -44,7 +44,7 @@ let rec add_thousands total value =
 
 let to_numerals value = add_numerals_of_order 1000 value [m;d;c;l;x;v;i] (add_thousands empty (value / 1000))
 
-let convert value = print_string ((add_units empty value) ^ "\n");;
+let convert value = print_string ((to_numerals value) ^ "\n");;
 
 (* 
 Add this line to run as a command line executable:
