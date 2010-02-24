@@ -1,5 +1,7 @@
 (* First step in making an OCAML Roman numeral converter *)
 
+open Array;;
+
 let empty = "";;
 let i = "I";;
 let v = "V";;
@@ -31,6 +33,18 @@ let add_units total value = add_numerals (i,v,x) total (base value 10);;
 let add_tens total value = add_numerals (x,l,c) total (base value 100);;
 
 let add_hundreds total value = add_numerals (c, d, m) total (base value 1000);;
+
+let add_numerals_of_order order value numeral_set total =
+	let based_value =
+		base value order
+	in
+	match (based_value) with
+	| 9 -> total ^ numeral_set.(0) ^ numeral_set.(2)
+	| 8 | 7 | 6 -> add numeral_set.(0) (total ^ numeral_set.(1)) based_value
+	| 5 -> total ^ numeral_set.(1)
+	| 4 -> total ^ numeral_set.(0) ^ numeral_set.(1)
+	| x -> add numeral_set.(0) total based_value
+;;
 
 let rec add_thousands total value = 
 	match (value) with
