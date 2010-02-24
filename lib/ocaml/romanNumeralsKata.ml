@@ -34,16 +34,23 @@ let add_tens total value = add_numerals (x,l,c) total (base value 100);;
 
 let add_hundreds total value = add_numerals (c, d, m) total (base value 1000);;
 
+let shift_numerals numeral_list =
+	List.tl (List.tl numeral_list)
+;;
+
 let add_numerals_of_order order value numeral_set total =
+	let higher_order_numeral = List.nth numeral_set 0 in
+	let mid_point_numeral = List.nth numeral_set 1 in
+	let unit_numeral = List.nth numeral_set 2 in
 	let based_value =
 		base value order
 	in
 	match (based_value) with
-	| 9 -> total ^ numeral_set.(0) ^ numeral_set.(2)
-	| 8 | 7 | 6 -> add numeral_set.(0) (total ^ numeral_set.(1)) based_value
-	| 5 -> total ^ numeral_set.(1)
-	| 4 -> total ^ numeral_set.(0) ^ numeral_set.(1)
-	| x -> add numeral_set.(0) total based_value
+	| 9 -> total ^ unit_numeral ^ higher_order_numeral
+	| 8 | 7 | 6 -> add unit_numeral (total ^ mid_point_numeral) (based_value-5)
+	| 5 -> total ^ mid_point_numeral
+	| 4 -> total ^ unit_numeral ^ mid_point_numeral
+	| x -> add unit_numeral total based_value
 ;;
 
 let rec add_thousands total value = 
@@ -52,7 +59,7 @@ let rec add_thousands total value =
 	| x -> add_thousands (total ^ m) (value - 1)
 ;;
 
-let to_numerals value = add_units (add_tens (add_hundreds (add_thousands empty (value / 1000) ) value) value) value;;
+let to_numerals value = add_numerals_of_order 10 value [x;v;i] (add_tens (add_hundreds (add_thousands empty (value / 1000) ) value) value);;
 
 let convert value = print_string ((add_units empty value) ^ "\n");;
 
